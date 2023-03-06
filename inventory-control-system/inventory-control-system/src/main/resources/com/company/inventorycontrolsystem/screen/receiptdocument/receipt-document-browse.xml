@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://receiptDocumentBrowse.caption"
+        focusComponent="receiptDocumentsTable">
+    <data readOnly="true">
+        <collection id="receiptDocumentsDc"
+                    class="com.company.inventorycontrolsystem.entity.ReceiptDocument">
+            <fetchPlan extends="_base">
+                <property name="shipper" fetchPlan="_base"/>
+                <property name="storages" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="receiptDocumentsDl">
+                <query>
+                    <![CDATA[select e from ics_ReceiptDocument e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="receiptDocumentsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="receiptDocumentsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="receiptDocumentsTable"
+                    width="100%"
+                    dataContainer="receiptDocumentsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="date"/>
+                <column id="type"/>
+                <column id="totalSum"/>
+                <column id="shipper"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="receiptDocumentsTable.create"/>
+                <button id="editBtn" action="receiptDocumentsTable.edit"/>
+                <button id="removeBtn" action="receiptDocumentsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

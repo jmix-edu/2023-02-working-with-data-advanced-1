@@ -1,0 +1,4 @@
+rootProject.name = 'model-extension-all'
+
+includeBuild '../inventory-control-system'
+includeBuild '../application'

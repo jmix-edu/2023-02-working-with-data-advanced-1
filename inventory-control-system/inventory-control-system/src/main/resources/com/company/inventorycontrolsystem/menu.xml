@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/ui/menu">
+
+    <menu id="ics" caption="msg://com.company.inventorycontrolsystem/menu.addon" insertAfter="administration">
+        <item screen="ics_Storage.browse"
+              caption="msg://com.company.inventorycontrolsystem.screen.storage/storageBrowse.menu"/>
+        <item screen="ics_Shipper.browse"
+              caption="msg://com.company.inventorycontrolsystem.screen.shipper/shipperBrowse.menu"/>
+        <item screen="ics_ReceiptDocument.browse"
+              caption="msg://com.company.inventorycontrolsystem.screen.receiptdocument/receiptDocumentBrowse.menu"/>
+    </menu>
+
+</menu-config>
