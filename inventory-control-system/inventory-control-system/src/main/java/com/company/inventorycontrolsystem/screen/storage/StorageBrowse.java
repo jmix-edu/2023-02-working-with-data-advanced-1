@@ -7,4 +7,7 @@ import com.company.inventorycontrolsystem.entity.Storage;
 @UiDescriptor("storage-browse.xml")
 @LookupComponent("storagesTable")
 public class StorageBrowse extends StandardLookup<Storage> {
+
+
+
 }
